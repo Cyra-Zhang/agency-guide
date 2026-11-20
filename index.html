@@ -158,9 +158,10 @@
       .overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 760px) {
+      html { scroll-behavior: auto; }
       .sidebar { transform: translateX(-100%); transition: transform .25s ease; width: min(82vw, 300px); }
       .sidebar.open { transform: translateX(0); }
-      .mobile-bar { display: flex; position: sticky; top: 0; z-index: 25; align-items: center; justify-content: space-between; padding: 10px 15px; background: rgba(255,255,255,.94); border-bottom: 1px solid #e8eef7; backdrop-filter: blur(10px); }
+      .mobile-bar { display: flex; position: sticky; top: 0; z-index: 25; align-items: center; justify-content: space-between; padding: 10px 15px; background: #ffffff; border-bottom: 1px solid #e8eef7; }
       .mobile-brand { color: #145fc7; font-size: 13px; font-weight: 800; }
       .menu-btn { width: 38px; height: 38px; border: 1px solid #e1eaf7; border-radius: 11px; color: #175ec0; background: #f4f8ff; font-size: 19px; cursor: pointer; }
       .mobile-overlay.show { display: block; position: fixed; inset: 0; z-index: 28; background: rgba(10,26,52,.35); }
@@ -252,17 +253,17 @@
         <div class="panel"><div class="panel-inner">
           <div class="guide-layout">
             <div class="guide-image-wrap">
-              <img class="guide-image zoomable" src="assets/posters/创建代理商流程操作指南.png?v=20261120-0342" alt="创建代理商操作指南长图" loading="lazy" />
+              <img class="guide-image zoomable" src="assets/posters/创建代理商流程操作指南.png?v=20261120-0342" alt="创建代理商操作指南长图" loading="lazy" decoding="async" />
               <p class="guide-note">图文操作指南：点击图片可放大查看细节。</p>
             </div>
             <div class="video-card">
               <div class="video-top"><strong>视频操作教程</strong><span class="video-badge">配套视频</span></div>
-              <video controls preload="metadata" playsinline poster="assets/posters/代理商创建流程.jpg">
-                <source src="assets/videos/01-agent-create.mp4" type="video/mp4" />
+              <video controls preload="none" playsinline poster="assets/posters/代理商创建流程.jpg">
+                <source src="assets/videos/代理商创建流程操作指南.mp4" type="video/mp4" />
                 当前浏览器暂不支持播放该视频，请更换浏览器后重试。
               </video>
               <p class="video-caption">按照视频演示完成代理商创建相关操作。</p>
-              <div class="video-actions"><a href="assets/videos/01-agent-create.mp4" download>下载视频</a><span>MP4 · H.264</span></div>
+              <div class="video-actions"><a href="assets/videos/代理商创建流程操作指南.mp4" download>下载视频</a><span>MP4 · H.264</span></div>
             </div>
           </div>
         </div></div>
@@ -275,12 +276,12 @@
         <div class="panel"><div class="panel-inner">
           <div class="guide-layout">
             <div class="guide-image-wrap">
-              <img class="guide-image zoomable" src="assets/images/服务商采购平台操作指南.png?v=20261120-0227" alt="服务商采购平台操作指南长图" loading="lazy" />
+              <img class="guide-image zoomable" src="assets/images/服务商采购平台操作指南.png?v=20261120-0227" alt="服务商采购平台操作指南长图" loading="lazy" decoding="async" />
               <p class="guide-note">图文操作指南：点击图片可放大查看细节。</p>
             </div>
             <div class="video-card">
               <div class="video-top"><strong>视频操作教程</strong><span class="video-badge">配套视频</span></div>
-              <video controls preload="metadata" playsinline poster="assets/posters/服务商采购.jpg">
+              <video controls preload="none" playsinline poster="assets/posters/服务商采购.jpg">
                 <source src="assets/videos/02-service-provider-purchase.mp4" type="video/mp4" />
                 当前浏览器暂不支持播放该视频，请更换浏览器后重试。
               </video>
@@ -298,12 +299,12 @@
         <div class="panel"><div class="panel-inner">
           <div class="guide-layout">
             <div class="guide-image-wrap">
-              <img class="guide-image zoomable" src="assets/images/靠谱人APP商户入网操作指南.png?v=20261120-0227" alt="靠谱人APP商户入网操作指南长图" loading="lazy" />
+              <img class="guide-image zoomable" src="assets/images/靠谱人APP商户入网操作指南.png?v=20261120-0227" alt="靠谱人APP商户入网操作指南长图" loading="lazy" decoding="async" />
               <p class="guide-note">图文操作指南：点击图片可放大查看细节。</p>
             </div>
             <div class="video-card portrait">
               <div class="video-top"><strong>视频操作教程</strong><span class="video-badge">配套视频</span></div>
-              <video controls preload="metadata" playsinline poster="assets/posters/靠谱人APP入网.jpg">
+              <video controls preload="none" playsinline poster="assets/posters/靠谱人APP入网.jpg">
                 <source src="assets/videos/03-merchant-onboarding.mp4" type="video/mp4" />
                 当前浏览器暂不支持播放该视频，请更换浏览器后重试。
               </video>
@@ -341,7 +342,7 @@
       const n = String(index + 1).padStart(2, '0');
       const card = document.createElement('div');
       card.className = 'slide-card zoomable-card';
-      card.innerHTML = `<img src="assets/slides/slide-${n}.jpg" alt="第 ${index + 1} 页：${title}" loading="lazy"><div class="slide-caption"><em>PAGE ${n}</em><span>${title}</span></div>`;
+      card.innerHTML = `<img src="assets/slides/slide-${n}.jpg" alt="第 ${index + 1} 页：${title}" loading="lazy" decoding="async"><div class="slide-caption"><em>PAGE ${n}</em><span>${title}</span></div>`;
       card.addEventListener('click', () => openLightbox(card.querySelector('img').src, card.querySelector('img').alt));
       slideGrid.appendChild(card);
     });
