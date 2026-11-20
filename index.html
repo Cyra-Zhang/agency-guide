@@ -145,9 +145,9 @@
     .back-top { position: fixed; right: 24px; bottom: 24px; z-index: 20; width: 44px; height: 44px; border: 0; border-radius: 14px; color: #fff; background: linear-gradient(135deg, #0759d7, #1a91ff); box-shadow: 0 8px 20px rgba(8,101,237,.28); cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(8px); transition: .2s; }
     .back-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
     .mobile-overlay { display: none; }
-    .lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: flex-start; justify-content: center; overflow: auto; padding: 64px 20px 40px; background: rgba(7,17,36,.88); cursor: zoom-out; }
+    .lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: flex-start; justify-content: flex-start; overflow: auto; padding: 64px 20px 40px; background: rgba(7,17,36,.88); cursor: zoom-out; }
     .lightbox.open { display: flex; }
-    .lightbox img { display: block; width: auto; max-width: 96vw; max-height: none; height: auto; object-fit: contain; border-radius: 7px; box-shadow: 0 20px 60px rgba(0,0,0,.3); cursor: default; }
+    .lightbox img { display: block; width: auto; max-width: none; max-height: none; height: auto; margin: 0 auto; object-fit: contain; border-radius: 7px; box-shadow: 0 20px 60px rgba(0,0,0,.3); cursor: default; }
     .lightbox-close { position: fixed; top: 18px; right: 22px; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font-size: 24px; cursor: pointer; }
 
     @media (max-width: 1080px) {
@@ -252,17 +252,17 @@
         <div class="panel"><div class="panel-inner">
           <div class="guide-layout">
             <div class="guide-image-wrap">
-              <img class="guide-image zoomable" src="assets/images/创建代理商操作指南.png?v=20261120-0227" alt="创建代理商操作指南长图" loading="lazy" />
+              <img class="guide-image zoomable" src="assets/images/创建代理商流程操作指南.png?v=20261120-0321" alt="创建代理商操作指南长图" loading="lazy" />
               <p class="guide-note">图文操作指南：点击图片可放大查看细节。</p>
             </div>
             <div class="video-card">
               <div class="video-top"><strong>视频操作教程</strong><span class="video-badge">配套视频</span></div>
               <video controls preload="metadata" playsinline poster="assets/posters/代理商创建流程.jpg">
-                <source src="assets/videos/01-agent-create.mp4" type="video/mp4" />
+                <source src="assets/videos/代理商创建流程操作指南.mp4" type="video/mp4" />
                 当前浏览器暂不支持播放该视频，请更换浏览器后重试。
               </video>
               <p class="video-caption">按照视频演示完成代理商创建相关操作。</p>
-              <div class="video-actions"><a href="assets/videos/01-agent-create.mp4" download>下载视频</a><span>MP4 · H.264</span></div>
+              <div class="video-actions"><a href="assets/videos/代理商创建流程操作指南.mp4" download>下载视频</a><span>MP4 · H.264</span></div>
             </div>
           </div>
         </div></div>
@@ -281,11 +281,11 @@
             <div class="video-card">
               <div class="video-top"><strong>视频操作教程</strong><span class="video-badge">配套视频</span></div>
               <video controls preload="metadata" playsinline poster="assets/posters/服务商采购.jpg">
-                <source src="assets/videos/02-service-provider-purchase.mp4" type="video/mp4" />
+                <source src="assets/videos/服务商采购指南.mp4" type="video/mp4" />
                 当前浏览器暂不支持播放该视频，请更换浏览器后重试。
               </video>
               <p class="video-caption">结合图文步骤观看视频，了解采购平台的完整操作流程。</p>
-              <div class="video-actions"><a href="assets/videos/02-service-provider-purchase.mp4" download>下载视频</a><span>MP4 · H.264</span></div>
+              <div class="video-actions"><a href="assets/videos/服务商采购指南.mp4" download>下载视频</a><span>MP4 · H.264</span></div>
             </div>
           </div>
         </div></div>
@@ -304,11 +304,11 @@
             <div class="video-card portrait">
               <div class="video-top"><strong>视频操作教程</strong><span class="video-badge">配套视频</span></div>
               <video controls preload="metadata" playsinline poster="assets/posters/靠谱人APP入网.jpg">
-                <source src="assets/videos/03-merchant-onboarding.mp4" type="video/mp4" />
+                <source src="assets/videos/靠谱人APP入网操作指南.mp4" type="video/mp4" />
                 当前浏览器暂不支持播放该视频，请更换浏览器后重试。
               </video>
               <p class="video-caption">演示靠谱人APP商户入网及审核进度查询操作。</p>
-              <div class="video-actions"><a href="assets/videos/03-merchant-onboarding.mp4" download>下载视频</a><span>MP4 · H.264</span></div>
+              <div class="video-actions"><a href="assets/videos/靠谱人APP入网操作指南.mp4" download>下载视频</a><span>MP4 · H.264</span></div>
             </div>
           </div>
         </div></div>
