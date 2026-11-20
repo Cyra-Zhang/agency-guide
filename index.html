@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#075ee8" />
+  <meta name="description" content="代理商操作指南资料中心，包含新签代理商注意事项、代理商创建流程、服务商采购平台操作指南、靠谱人APP商户入网操作指南。" />
+  <title>代理商操作指南｜渠道合作平台</title>
+  <style>
+    :root {
+      --blue: #0865ed;
+      --blue-deep: #064fc5;
+      --blue-soft: #eaf3ff;
+      --ink: #18243a;
+      --muted: #71809a;
+      --line: #e6edf7;
+      --surface: #ffffff;
+      --bg: #f4f7fc;
+      --sidebar-width: 272px;
+      --shadow: 0 12px 34px rgba(20, 57, 112, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 28px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .sidebar {
+      position: fixed; inset: 0 auto 0 0; z-index: 30;
+      width: var(--sidebar-width); height: 100vh;
+      display: flex; flex-direction: column;
+      background: #fff; border-right: 1px solid #e8eef7;
+      box-shadow: 8px 0 28px rgba(24, 61, 112, .04);
+    }
+    .brand {
+      padding: 28px 24px 25px;
+      color: #fff;
+      background: linear-gradient(135deg, #064fc8 0%, #0879f8 65%, #22a1ff 100%);
+      min-height: 146px;
+      position: relative; overflow: hidden;
+    }
+    .brand::after {
+      content: ""; position: absolute; width: 170px; height: 170px;
+      right: -60px; top: 30px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.22); box-shadow: 0 0 0 22px rgba(255,255,255,.06), 0 0 0 48px rgba(255,255,255,.04);
+    }
+    .brand-kicker { font-size: 11px; letter-spacing: 2px; opacity: .85; position: relative; z-index: 1; }
+    .brand-title { margin-top: 9px; font-size: 21px; font-weight: 800; letter-spacing: .5px; position: relative; z-index: 1; }
+    .brand-sub { margin-top: 4px; font-size: 11px; opacity: .82; position: relative; z-index: 1; }
+    .nav-label { padding: 25px 24px 10px; color: #9aa7bb; font-size: 11px; letter-spacing: 1.5px; font-weight: 700; }
+    .nav-list { display: grid; gap: 8px; padding: 0 14px; }
+    .nav-link {
+      display: flex; align-items: center; gap: 12px;
+      min-height: 60px; padding: 10px 12px;
+      border: 1px solid transparent; border-radius: 13px;
+      color: #56647b; transition: .2s ease;
+    }
+    .nav-link:hover { background: #f4f8ff; color: var(--blue); }
+    .nav-link.active { background: #edf5ff; border-color: #d7e8ff; color: var(--blue-deep); font-weight: 700; }
+    .nav-num {
+      flex: 0 0 34px; width: 34px; height: 34px; display: grid; place-items: center;
+      border-radius: 10px; background: #f0f4fa; color: #8b9ab0; font-size: 12px; font-weight: 800;
+    }
+    .nav-link.active .nav-num { color: #fff; background: linear-gradient(135deg, #0865ed, #2497ff); box-shadow: 0 5px 12px rgba(8,101,237,.22); }
+    .nav-text { font-size: 13px; line-height: 1.45; }
+    .sidebar-foot { margin-top: auto; padding: 18px 22px 24px; color: #a0adbf; font-size: 11px; border-top: 1px solid #f0f3f8; }
+    .sidebar-foot strong { color: #6e7e96; font-weight: 600; }
+
+    .main { margin-left: var(--sidebar-width); min-height: 100vh; }
+    .mobile-bar { display: none; }
+    .hero {
+      position: relative; overflow: hidden; padding: 43px 54px 42px;
+      color: #fff; background: linear-gradient(115deg, #064fc8 0%, #0872ed 55%, #1599ff 100%);
+    }
+    .hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; pointer-events: none; }
+    .hero::before { width: 330px; height: 330px; right: 9%; top: -230px; border: 1px solid rgba(255,255,255,.2); box-shadow: 0 0 0 35px rgba(255,255,255,.055), 0 0 0 75px rgba(255,255,255,.035); }
+    .hero::after { width: 190px; height: 190px; right: -42px; bottom: -120px; background: rgba(255,255,255,.07); }
+    .hero-inner { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; }
+    .eyebrow { font-size: 12px; letter-spacing: 2px; opacity: .86; font-weight: 600; }
+    .hero h1 { margin: 9px 0 8px; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.25; letter-spacing: .5px; }
+    .hero p { margin: 0; max-width: 650px; color: rgba(255,255,255,.83); font-size: 14px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 23px; }
+    .hero-meta span { border: 1px solid rgba(255,255,255,.24); background: rgba(255,255,255,.12); border-radius: 999px; padding: 5px 12px; font-size: 11px; }
+
+    .content { max-width: 1280px; margin: 0 auto; padding: 34px 44px 70px; }
+    .welcome {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      padding: 18px 22px; margin-bottom: 34px; background: #fff; border: 1px solid #e9eff8;
+      border-radius: 16px; box-shadow: 0 5px 18px rgba(28,63,112,.035);
+    }
+    .welcome strong { display: block; font-size: 14px; }
+    .welcome p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+    .welcome-mark { flex: 0 0 auto; display: flex; align-items: center; gap: 7px; color: var(--blue); font-size: 12px; font-weight: 700; }
+    .welcome-mark i { width: 7px; height: 7px; border-radius: 50%; background: #1bc48d; box-shadow: 0 0 0 4px #e6fbf3; }
+
+    .section { margin: 0 0 48px; scroll-margin-top: 28px; }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin: 0 0 17px; }
+    .section-title-wrap { display: flex; align-items: center; gap: 14px; }
+    .section-number { width: 46px; height: 46px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 14px; color: #fff; font-size: 18px; font-weight: 800; background: linear-gradient(135deg, #0758d7, #1b94ff); box-shadow: 0 8px 18px rgba(8,101,237,.2); }
+    .section h2 { margin: 0; font-size: 23px; line-height: 1.3; letter-spacing: .2px; }
+    .section-subtitle { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+    .section-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .action-link { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #dce9fb; background: #fff; border-radius: 999px; padding: 7px 12px; color: #2868c6; font-size: 11px; font-weight: 700; transition: .2s; }
+    .action-link:hover { border-color: #9ec6ff; background: #f5f9ff; }
+    .panel { background: #fff; border: 1px solid #e7edf6; border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+    .panel-inner { padding: 24px; }
+    .mini-heading { display: flex; align-items: center; gap: 9px; margin: 0 0 14px; font-size: 15px; font-weight: 800; }
+    .mini-heading::before { content: ""; width: 4px; height: 17px; border-radius: 4px; background: var(--blue); }
+    .overview-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 22px; }
+    .overview-card { padding: 15px 16px; background: linear-gradient(145deg, #f7faff, #eef5ff); border: 1px solid #e2edfc; border-radius: 13px; }
+    .overview-card b { display: block; margin-bottom: 5px; color: #1c5db8; font-size: 12px; }
+    .overview-card span { display: block; color: #66758e; font-size: 11px; line-height: 1.7; }
+    .slide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .slide-card { padding: 10px; border: 1px solid #e8edf5; border-radius: 14px; background: #fbfcff; cursor: zoom-in; transition: .2s; }
+    .slide-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(23,60,115,.1); border-color: #cfe1fb; }
+    .slide-card img { display: block; width: 100%; height: auto; border-radius: 8px; }
+    .slide-caption { display: flex; align-items: center; gap: 9px; padding: 10px 4px 2px; font-size: 12px; font-weight: 700; color: #52627a; }
+    .slide-caption em { font-style: normal; color: #0870ed; font-size: 10px; letter-spacing: .4px; }
+
+    .guide-layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 22px; align-items: start; }
+    .guide-image-wrap { padding: 17px; background: #f8fbff; border: 1px solid #e7effb; border-radius: 16px; text-align: center; }
+    .guide-image { display: block; width: min(100%, 650px); max-width: 100%; max-height: none; height: auto; margin: 0 auto; border-radius: 8px; box-shadow: 0 8px 25px rgba(22,65,124,.09); cursor: zoom-in; }
+    .guide-note { margin: 12px 4px 0; color: #7c8aa0; font-size: 11px; text-align: left; }
+    .video-card { position: sticky; top: 22px; padding: 17px; border: 1px solid #e6edf7; border-radius: 16px; background: #fff; box-shadow: 0 8px 25px rgba(22,65,124,.06); }
+    .video-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 11px; }
+    .video-top strong { font-size: 14px; }
+    .video-badge { padding: 4px 8px; border-radius: 999px; color: #1673e8; background: #edf5ff; font-size: 10px; font-weight: 700; }
+    video { display: block; width: 100%; max-height: 520px; border-radius: 11px; background: #101828; }
+    .video-card.portrait { width: 100%; }
+    .video-card.portrait video { width: min(100%, 260px); max-height: 620px; margin: 0 auto; }
+    .video-caption { margin: 11px 1px 0; color: #78869b; font-size: 11px; }
+    .video-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 12px; }
+    .video-actions a { color: #176bda; font-size: 11px; font-weight: 700; }
+    .video-actions span { color: #9aa6b7; font-size: 10px; }
+    .guide-image-wrap.full { max-width: 880px; margin: 0 auto; }
+    .guide-image-wrap.full .guide-image { max-width: min(100%, 720px); }
+
+    .footer { padding: 22px 0 5px; border-top: 1px solid #e5ebf4; color: #96a3b5; font-size: 11px; text-align: center; }
+    .back-top { position: fixed; right: 24px; bottom: 24px; z-index: 20; width: 44px; height: 44px; border: 0; border-radius: 14px; color: #fff; background: linear-gradient(135deg, #0759d7, #1a91ff); box-shadow: 0 8px 20px rgba(8,101,237,.28); cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(8px); transition: .2s; }
+    .back-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .mobile-overlay { display: none; }
+    .lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: flex-start; justify-content: center; overflow: auto; padding: 64px 20px 40px; background: rgba(7,17,36,.88); cursor: zoom-out; }
+    .lightbox.open { display: flex; }
+    .lightbox img { display: block; width: min(90vw, 1100px); max-width: 96vw; max-height: none; height: auto; object-fit: contain; border-radius: 7px; box-shadow: 0 20px 60px rgba(0,0,0,.3); cursor: default; }
+    .lightbox-close { position: fixed; top: 18px; right: 22px; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font-size: 24px; cursor: pointer; }
+
+    @media (max-width: 1080px) {
+      :root { --sidebar-width: 238px; }
+      .content { padding: 30px 28px 60px; }
+      .hero { padding-left: 36px; }
+      .guide-layout { grid-template-columns: minmax(0, 1fr) 290px; }
+      .overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .sidebar { transform: translateX(-100%); transition: transform .25s ease; width: min(82vw, 300px); }
+      .sidebar.open { transform: translateX(0); }
+      .mobile-bar { display: flex; position: sticky; top: 0; z-index: 25; align-items: center; justify-content: space-between; padding: 10px 15px; background: rgba(255,255,255,.94); border-bottom: 1px solid #e8eef7; backdrop-filter: blur(10px); }
+      .mobile-brand { color: #145fc7; font-size: 13px; font-weight: 800; }
+      .menu-btn { width: 38px; height: 38px; border: 1px solid #e1eaf7; border-radius: 11px; color: #175ec0; background: #f4f8ff; font-size: 19px; cursor: pointer; }
+      .mobile-overlay.show { display: block; position: fixed; inset: 0; z-index: 28; background: rgba(10,26,52,.35); }
+      .main { margin-left: 0; }
+      .hero { padding: 30px 22px 28px; }
+      .hero h1 { font-size: 28px; }
+      .content { padding: 20px 15px 45px; }
+      .welcome { padding: 14px 15px; align-items: flex-start; }
+      .welcome-mark { display: none; }
+      .section { margin-bottom: 37px; }
+      .section-head { align-items: flex-start; flex-direction: column; }
+      .section-title-wrap { gap: 10px; }
+      .section h2 { font-size: 20px; }
+      .section-number { width: 40px; height: 40px; border-radius: 12px; }
+      .panel-inner { padding: 15px; }
+      .overview-grid { grid-template-columns: 1fr; gap: 9px; }
+      .slide-grid { grid-template-columns: 1fr; }
+      .guide-layout { grid-template-columns: 1fr; }
+      .video-card { position: static; order: -1; }
+      .guide-image-wrap { padding: 9px; }
+      .guide-image-wrap.full .guide-image { max-width: 100%; }
+      .back-top { right: 15px; bottom: 15px; }
+      .lightbox { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar" aria-label="网站目录">
+    <div class="brand">
+      <div class="brand-kicker">CHANNEL PARTNER · GUIDE</div>
+      <div class="brand-title">代理商操作指南</div>
+      <div class="brand-sub">渠道合作平台 · 资料中心</div>
+    </div>
+    <div class="nav-label">CONTENTS / 目录导航</div>
+    <nav class="nav-list">
+      <a class="nav-link active" href="#section-1"><span class="nav-num">01</span><span class="nav-text">新签代理商注意事项</span></a>
+      <a class="nav-link" href="#section-2"><span class="nav-num">02</span><span class="nav-text">代理商创建流程</span></a>
+      <a class="nav-link" href="#section-3"><span class="nav-num">03</span><span class="nav-text">服务商采购平台操作指南</span></a>
+      <a class="nav-link" href="#section-4"><span class="nav-num">04</span><span class="nav-text">靠谱人APP商户入网操作指南</span></a>
+    </nav>
+    <div class="sidebar-foot"><strong>渠道合作平台</strong><br>操作资料 · 图文与视频教程<br>资料更新：2026.11</div>
+  </aside>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <main class="main">
+    <div class="mobile-bar">
+      <span class="mobile-brand">代理商操作指南</span>
+      <button class="menu-btn" id="menuBtn" aria-label="打开目录">☰</button>
+    </div>
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">渠道合作平台 · 操作指南</div>
+        <h1>代理商操作指南</h1>
+        <p>从新签交付、代理商创建，到设备采购与商户入网，集中查看操作流程与配套资料。</p>
+        <div class="hero-meta"><span>4 大操作目录</span><span>图文操作指引</span><span>视频教程</span><span>支持电脑与手机浏览</span></div>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="welcome">
+        <div><strong>欢迎使用代理商操作指南资料中心</strong><p>点击左侧目录即可跳转到对应内容；操作长图可点击放大，视频可直接播放。</p></div>
+        <div class="welcome-mark"><i></i>资料已整理</div>
+      </div>
+
+      <section class="section" id="section-1">
+        <div class="section-head">
+          <div class="section-title-wrap"><div class="section-number">01</div><div><h2>新签代理商注意事项</h2><p class="section-subtitle">新签代理商首次交付同步事项与展业规范 · 2026.11 更新版</p></div></div>
+          <div class="section-actions"><a class="action-link" href="assets/新签代理商首次交付同步事项_更新版.pdf" target="_blank" rel="noopener">↗ 在线查看 PDF</a><a class="action-link" href="assets/新签代理商首次交付同步事项_更新版.pdf" download>↓ 下载 PDF</a><a class="action-link" href="assets/新签代理商首次交付同步事项_更新版.pptx" download>↓ 下载 PPTX</a></div>
+        </div>
+        <div class="panel"><div class="panel-inner">
+          <h3 class="mini-heading">内容速览</h3>
+          <div class="overview-grid">
+            <div class="overview-card"><b>对接机制与群规范</b><span>市场经理、客户成功部、支付运营、值班助手的职责分工；问题单提交规范与升级路径。</span></div>
+            <div class="overview-card"><b>日常响应时效</b><span>群内即时响应、后台处理，以及按工作日计算的采购、接口、风控与项目对接时效。</span></div>
+            <div class="overview-card"><b>商户进件规则</b><span>主体资质、经营资料、进件自查项，以及重复入网的判定与处理要求。</span></div>
+            <div class="overview-card"><b>费率、结算与分润</b><span>费率构成、D0与结算周期、账户变更、分润口径及对账流程。</span></div>
+            <div class="overview-card"><b>银行活动管理</b><span>活动配置、账单回填、商户打标及常见差错提醒。</span></div>
+            <div class="overview-card"><b>合规展业与风控</b><span>可开展事项、禁止行为，以及违规后的风控处置要求。</span></div>
+          </div>
+          <h3 class="mini-heading">交付同步资料（共 12 页）</h3>
+          <div class="slide-grid" id="slideGrid"></div>
+        </div></div>
+      </section>
+
+      <section class="section" id="section-2">
+        <div class="section-head">
+          <div class="section-title-wrap"><div class="section-number">02</div><div><h2>代理商创建流程</h2><p class="section-subtitle">创建代理商操作指南 · 后台操作步骤与视频演示</p></div></div>
+        </div>
+        <div class="panel"><div class="panel-inner">
+          <div class="guide-layout">
+            <div class="guide-image-wrap">
+              <img class="guide-image zoomable" src="assets/images/创建代理商操作指南.png" alt="创建代理商操作指南长图" loading="lazy" />
+              <p class="guide-note">图文操作指南：点击图片可放大查看细节。</p>
+            </div>
+            <div class="video-card">
+              <div class="video-top"><strong>视频操作教程</strong><span class="video-badge">配套视频</span></div>
+              <video controls preload="metadata" playsinline poster="assets/posters/代理商创建流程.jpg">
+                <source src="assets/videos/代理商创建流程操作指南.mp4" type="video/mp4" />
+                当前浏览器暂不支持播放该视频，请更换浏览器后重试。
+              </video>
+              <p class="video-caption">按照视频演示完成代理商创建相关操作。</p>
+              <div class="video-actions"><a href="assets/videos/代理商创建流程操作指南.mp4" download>下载视频</a><span>MP4 · H.264</span></div>
+            </div>
+          </div>
+        </div></div>
+      </section>
+
+      <section class="section" id="section-3">
+        <div class="section-head">
+          <div class="section-title-wrap"><div class="section-number">03</div><div><h2>服务商采购平台操作指南</h2><p class="section-subtitle">服务商采购平台操作步骤 · 采购下单、支付与订单管理</p></div></div>
+        </div>
+        <div class="panel"><div class="panel-inner">
+          <div class="guide-layout">
+            <div class="guide-image-wrap">
+              <img class="guide-image zoomable" src="assets/images/服务商采购平台操作指南.png" alt="服务商采购平台操作指南长图" loading="lazy" />
+              <p class="guide-note">图文操作指南：点击图片可放大查看细节。</p>
+            </div>
+            <div class="video-card">
+              <div class="video-top"><strong>视频操作教程</strong><span class="video-badge">配套视频</span></div>
+              <video controls preload="metadata" playsinline poster="assets/posters/服务商采购.jpg">
+                <source src="assets/videos/服务商采购指南.mp4" type="video/mp4" />
+                当前浏览器暂不支持播放该视频，请更换浏览器后重试。
+              </video>
+              <p class="video-caption">结合图文步骤观看视频，了解采购平台的完整操作流程。</p>
+              <div class="video-actions"><a href="assets/videos/服务商采购指南.mp4" download>下载视频</a><span>MP4 · H.264</span></div>
+            </div>
+          </div>
+        </div></div>
+      </section>
+
+      <section class="section" id="section-4">
+        <div class="section-head">
+          <div class="section-title-wrap"><div class="section-number">04</div><div><h2>靠谱人APP商户入网操作指南</h2><p class="section-subtitle">商户下载安装、入网资料填写与审核进度查询</p></div></div>
+        </div>
+        <div class="panel"><div class="panel-inner">
+          <div class="guide-layout">
+            <div class="guide-image-wrap">
+              <img class="guide-image zoomable" src="assets/images/靠谱人APP商户入网操作指南.png" alt="靠谱人APP商户入网操作指南长图" loading="lazy" />
+              <p class="guide-note">图文操作指南：点击图片可放大查看细节。</p>
+            </div>
+            <div class="video-card portrait">
+              <div class="video-top"><strong>视频操作教程</strong><span class="video-badge">配套视频</span></div>
+              <video controls preload="metadata" playsinline poster="assets/posters/靠谱人APP入网.jpg">
+                <source src="assets/videos/靠谱人APP入网操作指南.mp4" type="video/mp4" />
+                当前浏览器暂不支持播放该视频，请更换浏览器后重试。
+              </video>
+              <p class="video-caption">演示靠谱人APP商户入网及审核进度查询操作。</p>
+              <div class="video-actions"><a href="assets/videos/靠谱人APP入网操作指南.mp4" download>下载视频</a><span>MP4 · H.264</span></div>
+            </div>
+          </div>
+        </div></div>
+      </section>
+
+      <footer class="footer">渠道合作平台 · 代理商操作指南资料中心<br>资料依据所提供的操作长图、视频及《新签代理商首次交付同步事项》整理</footer>
+    </div>
+  </main>
+
+  <button class="back-top" id="backTop" aria-label="返回顶部" title="返回顶部">↑</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="图片预览"><button class="lightbox-close" id="lightboxClose" aria-label="关闭">×</button><img id="lightboxImage" alt="放大预览" /></div>
+
+  <script>
+    const slideTitles = [
+      '新签代理商首次交付同步事项与展业规范',
+      '谁来对：四类角色与值班机制',
+      '群对接规范：三件套 + 三条补充',
+      '日常问题对接时效（一）：分钟级',
+      '日常问题对接时效（二）：按工作日计',
+      '商户进件规则',
+      '商户进件：一次通过的自查项',
+      '重复入网：30 天与 1 元的红线',
+      '费率、结算与 D0 倒挂',
+      '分润与对账：口径先讲清',
+      '银行活动：配置、回填与标签',
+      '合规展业与风控红线'
+    ];
+    const slideGrid = document.getElementById('slideGrid');
+    slideTitles.forEach((title, index) => {
+      const n = String(index + 1).padStart(2, '0');
+      const card = document.createElement('div');
+      card.className = 'slide-card zoomable-card';
+      card.innerHTML = `<img src="assets/slides/slide-${n}.jpg" alt="第 ${index + 1} 页：${title}" loading="lazy"><div class="slide-caption"><em>PAGE ${n}</em><span>${title}</span></div>`;
+      card.addEventListener('click', () => openLightbox(card.querySelector('img').src, card.querySelector('img').alt));
+      slideGrid.appendChild(card);
+    });
+
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('mobileOverlay');
+    const menuBtn = document.getElementById('menuBtn');
+    function closeMenu() { sidebar.classList.remove('open'); overlay.classList.remove('show'); }
+    menuBtn.addEventListener('click', () => { sidebar.classList.toggle('open'); overlay.classList.toggle('show'); });
+    overlay.addEventListener('click', closeMenu);
+    document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', closeMenu));
+
+    const navLinks = [...document.querySelectorAll('.nav-link')];
+    const sections = [...document.querySelectorAll('.section')];
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-25% 0px -60% 0px', threshold: 0 });
+    sections.forEach(section => observer.observe(section));
+
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => backTop.classList.toggle('show', window.scrollY > 500), { passive: true });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    function openLightbox(src, alt) { lightboxImage.src = src; lightboxImage.alt = alt || '图片放大预览'; lightbox.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeLightbox() { lightbox.classList.remove('open'); lightboxImage.src = ''; document.body.style.overflow = ''; }
+    document.querySelectorAll('img.zoomable').forEach(img => img.addEventListener('click', () => openLightbox(img.src, img.alt)));
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeMenu(); } });
+  </script>
+</body>
+</html>
